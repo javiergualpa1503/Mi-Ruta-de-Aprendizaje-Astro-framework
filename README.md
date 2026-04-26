@@ -1,46 +1,19 @@
-# Astro Starter Kit: Basics
+# Mi Ruta de Aprendizaje
 
-```sh
-npm create astro@latest -- --template basics
-```
+Este repositorio es una bitácora técnica de mi progreso con Astro. Aquí guardo ejemplos prácticos, configuraciones y notas sobre los conceptos clave del framework.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Conceptos Dominados
 
-## 🚀 Project Structure
+### 🏗️Arquitectura y Layouts
 
-Inside of your Astro project, you'll see the following folders and files:
+He implementado un sistema de Layouts reutilizables para mantener la consistencia visual y estructural en todo el sitio.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+- Uso de `<slot />`para la inyección de contenido dinámico.
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- Configuración de metadatos globales (SEO) desde un componente base.
 
-## 🧞 Commands
+### 🔄 View Transitions (Navegación Fluida)
 
-All commands are run from the root of the project, from a terminal:
+Configuré la API de View Transitions para lograr una experiencia de usuario similar a una Single Page Application (SPA), permitiendo:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Transiciones suaves entre páginas sin recargas completas del navegador.
