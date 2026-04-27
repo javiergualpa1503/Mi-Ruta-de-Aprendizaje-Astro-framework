@@ -1,0 +1,37 @@
+---
+import type { GetStaticPaths } from "astro";
+import PokemonCard from '../../components/PokemonCard.astro'
+import Layout from '../../layouts/Layout.astro'
+
+interface Props {
+  url: string;
+  name: string;
+}
+export const getStaticPaths = (() => {
+    const data = fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+    .then(res => res.json())
+    .then((data) => {
+        return data.results.map((pokemon: { name: string; url: string }) => ({
+            params: { id: pokemon.url.split('/')[pokemon.url.split('/').length - 2] },
+            props: { name: pokemon.name, url: pokemon.url }
+        }))
+    })
+    return data
+   
+}) as GetStaticPaths;
+
+const {name, url } = Astro.props
+const { id } = Astro.params
+const audioUrl = `https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${id}.ogg`
+
+---
+
+<Layout title="Algun Pokemon">
+    <section class="flex flex-col items-center justify-center">
+        <PokemonCard name={name} url={url} isBig/>  
+        <audio controls class="mt-4">
+            <source src={audioUrl} type="audio/ogg"/>
+        </audio>
+        <a href="/" class=" mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Regresar</a>
+    </section>
+</Layout>
