@@ -5,29 +5,28 @@ import Layout from '@layouts/Layout.astro'
 
 interface Props {
   url: string;
+  name: string;
 }
 export const getStaticPaths = (() => {
     const data = fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
     .then(res => res.json())
     .then((data) => {
         return data.results.map((pokemon: { name: string; url: string }) => ({
-            params: { name: pokemon.name },
-            props: { url: pokemon.url }
+            params: { id: pokemon.url.split('/')[pokemon.url.split('/').length - 2] },
+            props: { name: pokemon.name, url: pokemon.url }
         }))
     })
     return data
    
 }) as GetStaticPaths;
 
-const {url} = Astro.props
-const { name } = Astro.params  as { name: string }
-const id = url.split('/')[url.split('/').length - 2]
+const {name, url } = Astro.props
+const { id } = Astro.params
 const audioUrl = `https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${id}.ogg`
-const imageUrl= `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
 
 ---
 
-<Layout title={`Pokemon: ${name}`} description={`Información sobre el pokemon ${name}`} image={imageUrl}>
+<Layout title="Algun Pokemon">
     <section class="flex flex-col items-center justify-center">
         <PokemonCard name={name} url={url} isBig/>  
         <audio controls class="mt-4">
