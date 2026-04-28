@@ -1,8 +1,8 @@
 ---
 import type { GetStaticPaths } from 'astro'
-import PokemonCard from '../../components/PokemonCard.astro'
-import type { PokemonList } from '../../interfaces/PokemonList.interfaces'
-import Layout from '../../layouts/Layout.astro'
+import PokemonCard from '@components/PokemonCard.astro'
+import type { PokemonList } from '@interfaces/PokemonList.interfaces'
+import Layout from '@layouts/Layout.astro'
 
 
 export const getStaticPaths = (async ({paginate}) => {
